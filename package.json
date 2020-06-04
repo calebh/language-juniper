@@ -1,6 +1,6 @@
 {
   "name": "language-juniper",
-  "version": "2.2.0",
+  "version": "2.1.0",
   "description": "A package for the Juniper programming language",
   "keywords": [
     "language",
@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "engines": {
-    "atom": ">=1.0.0 <2.0.0"
+    "atom": "*"
   },
   "readme": "# Juniper language package\n\nProvides support for syntax coloring in the Atom text editor.\n",
   "readmeFilename": "README.md",
