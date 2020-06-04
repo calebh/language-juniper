@@ -1,0 +1,23 @@
+{
+  "name": "language-juniper",
+  "version": "2.0.0",
+  "description": "A package for the Juniper programming language",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calebh/language-juniper.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "readme": "# Juniper language package\n\nProvides support for syntax coloring in the Atom text editor.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/calebh/language-juniper/issues"
+  },
+  "homepage": "https://github.com/calebh/language-juniper#readme"
+}

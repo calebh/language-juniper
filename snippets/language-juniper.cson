@@ -1,0 +1,28 @@
+# If you want some example snippets, check out:
+# https://github.com/atom/language-gfm/blob/master/snippets/gfm.cson
+
+'.source.juniper':
+  'Function lambda':
+    'prefix': 'fn'
+    'body': 'fn (${1:arguments}) -> ${2:body} end'
+  'Function':
+    'prefix': 'fun'
+    'body': 'fun ${1:name}(${2:args}) =\n    ${3:body}'
+  'If else':
+    'prefix': 'if'
+    'body': 'if ${1:condition} then\n    ${2:trueBranch}\nelse\n    ${3:falseBranch}\nend'
+  'Let expression':
+    'prefix': 'let'
+    'body': 'let ${1:name} = ${2:expr}'
+  'Case expression':
+    'prefix': 'case'
+    'body': 'case ${1:matchOn} of\n| ${2:pattern1} => ${3:expr1}\n| ${4:pattern2} => ${5:expr2}\nend'
+  'While loop':
+    'prefix': 'while'
+    'body': 'while ${1:condition} do\n    ${2:body}\nend'
+  'Do while loop':
+    'prefix': 'do'
+    'body': 'do\n    ${1:body}\nwhile ${2:condition} end'
+  'For while loop':
+    'prefix': 'for'
+    'body': 'for ${1:i} in ${2:low} to ${3:high} do\n    ${4:body}\nend'

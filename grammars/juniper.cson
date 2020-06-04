@@ -1,0 +1,200 @@
+# If this is your first time writing a language grammar, check out:
+#   -
+
+'scopeName': 'source.juniper'
+'name': 'Juniper'
+'fileTypes': [
+  'jun'
+]
+'patterns': [
+  {
+    'include': '#line-comments'
+  }
+  {
+    'include': '#comments'
+  }
+  {
+    'include': '#inlinecpp'
+  }
+  {
+    'include': '#module'
+  }
+  {
+    'include': '#open'
+  }
+  {
+    'include': '#type'
+  }
+  {
+    'include': '#function'
+  }
+  {
+    'include': '#keywords'
+  }
+  {
+    'include': '#number'
+  }
+  {
+    'include': '#builtintypes'
+  }
+  {
+    'include': '#include'
+  }
+]
+'repository':
+  'type':
+    'patterns' : [
+      {
+        'begin': '\\b(type)\\s+([A-Za-z0-9_]+)\\b'
+        'end': '='
+        'beginCaptures':
+          '1':
+            'name': 'keyword.other.juniper'
+          '2':
+            'name': 'entity.name.type.juniper'
+      }
+    ]
+  'line-comments':
+    'patterns': [
+      {
+        'match': '//.*$'
+        'name': 'comment.line.double-slash.juniper'
+      }
+    ]
+  'comments':
+    'patterns': [
+      {
+        'begin': '\\(\\*'
+        'end': '\\*\\)'
+        'name': 'comment.block.juniper'
+      }
+    ]
+  'module':
+    'patterns' : [
+      {
+        'match': '\\b(module)\\s+\\b([A-Za-z0-9_]+)$'
+        'captures':
+          '1':
+            'name': 'keyword.other.module-definition.juniper'
+          '2':
+            'name': 'entity.name.section'
+      }
+    ]
+  'open':
+    'patterns' : [
+      {
+        'begin': '\\b(open)\\s*\\('
+        'end': '\\)'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.other.juniper'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#line-comments'
+          }
+          {
+            'match': '\\s*,\\s*'
+          }
+          {
+            'match': '\\b[A-Za-z0-9_]+\\b'
+            'name': 'entity.name.section.juniper'
+          }
+        ]
+      }
+    ]
+  'include':
+    'patterns' : [
+      {
+        'begin': '\\b(include)\\s*\\('
+        'end': '\\)'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.other.juniper'
+        'patterns': [
+          {
+            'match': '".*?[^\\\\]"'
+            'name': 'string.quoted.double'
+          }
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#line-comments'
+          }
+          {
+            'match': '\\s*,\\s*'
+          }
+        ]
+      }
+    ]
+  'function':
+    'patterns': [
+      {
+        'begin': '\\b(fun)\\s+([A-Za-z0-9_]+)\\b'
+        'end': '='
+        'beginCaptures':
+          '1':
+            'name': 'keyword.other.juniper'
+          '2':
+            'name': 'entity.name.function.juniper'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#line-comments'
+          }
+          {
+            'include': '#builtintypes'
+          }
+        ]
+      }
+    ]
+  'keywords':
+    'patterns': [
+      {
+        'match': '\\b(->|=>|fn|if|then|in|else|elif|let|set|ref|of|do|for|case|while|to|downto|end|array|mutable|\\(\\))\\b'
+        'name': 'keyword.other.juniper'
+      }
+      {
+        'match': '\\b(!=|==|and|or|not|~~~|\\|\\|\\||&&&|<|>|<=|>=|mod|\\+|-|\\*|\\/|!|<<<|>>>)\\b'
+        'name': 'keyword.operator.juniper'
+      }
+      {
+        'match': '\\b(true|false)\\b'
+        'name': 'constant.language.juniper'
+      }
+    ]
+  'builtintypes':
+    'patterns': [
+      {
+        'match': '\\b(uint8|int8|uint16|int16|uint32|int32|uint64|int64|unit|double|float)\\b'
+        'name': 'storage.type.juniper'
+      }
+    ]
+  'inlinecpp':
+    'patterns': [
+      {
+        'begin': '#'
+        'end': '#'
+        'patterns': [
+          {
+            'include': 'source.cpp'
+          }
+        ]
+      }
+    ]
+  'number':
+    'patterns':[
+      {
+        'match': '\\b-?[0-9]+\\b'
+        'name': 'constant.numeric.juniper'
+      }
+      {
+        'match': '\\b-?[0-9]+\.[0-9]+\\b'
+        'name': 'constant.numeric.juniper'
+      }
+    ]
